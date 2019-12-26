@@ -1,0 +1,5 @@
+com\sample\swagger\controller\SampleController.class
+com\sample\swagger\SwaggerApp.class
+com\sample\swagger\api\ConnectionsApi.class
+com\sample\swagger\Connection.class
+com\sample\swagger\ConnectionEntity.class
