@@ -1,3 +1,12 @@
+com\sample\core\repository\ArticleDomain.class
+com\sample\core\ArticleEntity.class
+com\sample\core\api\V1Api.class
+com\sample\core\api\ArticlesApi.class
+com\sample\core\controller\ArticleController.class
 com\sample\core\ArticlesApp.class
+com\sample\core\GeneralResponse.class
+com\sample\core\service\ArticleService.class
 com\sample\core\controller\reponses\PostResponse.class
 com\sample\core\controller\reponses\AbstractResponse.class
+com\sample\core\repository\ArticleRepository.class
+com\sample\core\Article.class

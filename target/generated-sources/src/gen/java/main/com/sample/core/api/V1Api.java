@@ -30,10 +30,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-@Api(value = "articles", description = "the articles API")
-public interface ArticlesApi {
+@Api(value = "v1", description = "the v1 API")
+public interface V1Api {
 
-    Logger log = LoggerFactory.getLogger(ArticlesApi.class);
+    Logger log = LoggerFactory.getLogger(V1Api.class);
 
     default Optional<ObjectMapper> getObjectMapper() {
         return Optional.empty();
@@ -50,7 +50,7 @@ public interface ArticlesApi {
     @ApiOperation(value = "List articles", nickname = "articles", notes = "Returns list of articles", response = Article.class, tags={ "articles", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = Article.class) })
-    @RequestMapping(value = "/articles/",
+    @RequestMapping(value = "/v1/articles",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     default ResponseEntity<Article> articles() {
@@ -64,7 +64,7 @@ public interface ArticlesApi {
                 }
             }
         } else {
-            log.warn("ObjectMapper or HttpServletRequest not configured in default ArticlesApi interface so no example is generated");
+            log.warn("ObjectMapper or HttpServletRequest not configured in default V1Api interface so no example is generated");
         }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -74,12 +74,12 @@ public interface ArticlesApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "All corresponding entities were deleted."),
         @ApiResponse(code = 400, message = "Could not delete entities: Something went wrong!") })
-    @RequestMapping(value = "/articles/{articleID}",
+    @RequestMapping(value = "/v1/articles/{articleID}",
         method = RequestMethod.DELETE)
     default ResponseEntity<Void> deleteArticle(@ApiParam(value = "Article ID to delete",required=true) @PathVariable("articleID") Long articleID) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
         } else {
-            log.warn("ObjectMapper or HttpServletRequest not configured in default ArticlesApi interface so no example is generated");
+            log.warn("ObjectMapper or HttpServletRequest not configured in default V1Api interface so no example is generated");
         }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -88,7 +88,7 @@ public interface ArticlesApi {
     @ApiOperation(value = "Find connection by ID", nickname = "getArticle", notes = "Returns a single connection", response = Article.class, tags={ "connection", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = Article.class) })
-    @RequestMapping(value = "/articles/{articleID}",
+    @RequestMapping(value = "/v1/articles/{articleID}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     default ResponseEntity<Article> getArticle(@ApiParam(value = "ID of the article to return",required=true) @PathVariable("articleID") Integer articleID) {
@@ -102,7 +102,7 @@ public interface ArticlesApi {
                 }
             }
         } else {
-            log.warn("ObjectMapper or HttpServletRequest not configured in default ArticlesApi interface so no example is generated");
+            log.warn("ObjectMapper or HttpServletRequest not configured in default V1Api interface so no example is generated");
         }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -111,7 +111,7 @@ public interface ArticlesApi {
     @ApiOperation(value = "Add a new article to the list of connections", nickname = "postArticle", notes = "", response = GeneralResponse.class, tags={ "article", })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Created", response = GeneralResponse.class) })
-    @RequestMapping(value = "/articles/",
+    @RequestMapping(value = "/v1/articles",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
     default ResponseEntity<GeneralResponse> postArticle(@ApiParam(value = "Article object that needs to be added to the list of articles" ,required=true )  @Valid @RequestBody Article body) {
@@ -125,7 +125,7 @@ public interface ArticlesApi {
                 }
             }
         } else {
-            log.warn("ObjectMapper or HttpServletRequest not configured in default ArticlesApi interface so no example is generated");
+            log.warn("ObjectMapper or HttpServletRequest not configured in default V1Api interface so no example is generated");
         }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -135,13 +135,13 @@ public interface ArticlesApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 404, message = "Could not update the entity: The specified entity does not exist!") })
-    @RequestMapping(value = "/articles/{articleID}",
+    @RequestMapping(value = "/v1/articles/{articleID}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
     default ResponseEntity<Void> updateArticle(@ApiParam(value = "ID of article to update",required=true) @PathVariable("connectionId") Long connectionId,@ApiParam(value = "Article object that needs to be updated in the list of articles" ,required=true )  @Valid @RequestBody Article body) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
         } else {
-            log.warn("ObjectMapper or HttpServletRequest not configured in default ArticlesApi interface so no example is generated");
+            log.warn("ObjectMapper or HttpServletRequest not configured in default V1Api interface so no example is generated");
         }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }

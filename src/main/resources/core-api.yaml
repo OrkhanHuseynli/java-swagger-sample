@@ -6,112 +6,80 @@ info:
   contact:
     email: ".....@gmail.com"
 tags:
-- name: "connections"
-  description: "Access to database connections"
+  - name: "connections"
+    description: "Access to database connections"
 schemes:
-- "http"
+  - "http"
 paths:
-  /articles:
-    get:
-      tags:
-      - "articles"
-      summary: "List articles"
-      description: "Returns list of articles"
-      operationId: "articles"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            type: "array"
-            items:
+  /articles/:
+      get:
+        tags:
+          - "articles"
+        summary: "List articles"
+        description: "Returns list of articles"
+        operationId: "articles"
+        produces:
+          - "application/json"
+        responses:
+          200:
+            description: "OK"
+            schema:
+              type: "array"
+              items:
               $ref: "#/definitions/Article"
-    post:
-      tags:
-      - "article"
-      summary: "Add a new article to the list of connections"
-      description: ""
-      operationId: "postArticle"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Article object that needs to be added to the list of articles"
-        required: true
-        schema:
-          $ref: "#/definitions/Article"
-      responses:
-        201:
-          description: "Created"
-          schema:
-            $ref: "#/definitions/GeneralResponse"
-
+      post:
+        tags:
+          - "article"
+        summary: "Add a new article to the list of connections"
+        description: ""
+        operationId: "postArticle"
+        produces:
+          - "application/json"
+        parameters:
+          - in: "body"
+            name: "body"
+            description: "Article object that needs to be added to the list of articles"
+            required: true
+            schema:
+              $ref: "#/definitions/Article"
+        responses:
+          201:
+            description: "Created"
+            schema:
+               $ref: "#/definitions/GeneralResponse"
   /articles/{articleID}:
-    get:
-      tags:
-      - "connection"
-      summary: "Find connection by ID"
-      description: "Returns a single connection"
-      operationId: "getArticle"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "articleID"
-        in: "path"
-        description: "ID of the article to return"
-        required: true
-        type: "integer"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "#/definitions/Article"
-    put:
-      tags:
-      - "article"
-      summary: "Update an existing article by ID"
-      description: ""
-      operationId: "updateArticle"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "connectionId"
-        in: "path"
-        description: "ID of article to update"
-        required: true
-        type: "integer"
-        format: "int64"
-      - in: "body"
-        name: "body"
-        description: "Article object that needs to be updated in the list of articles"
-        required: true
-        schema:
-          $ref: "#/definitions/Article"
-      responses:
-        200:
-          description: "OK"
-        404:
-          description: "Could not update the entity: The specified entity does not exist!"
-    delete:
-      tags:
-      - "article"
-      summary: "Deletes a article by ID"
-      description: ""
-      operationId: "deleteArticle"
-      parameters:
-      - name: "articleID"
-        in: "path"
-        description: "Article ID to delete"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "All corresponding entities were deleted."
-        400:
-          description: "Could not delete entities: Something went wrong!"
+            required: true
+            type: "integer"
+            format: "int64"
+          - in: "body"
+            name: "body"
+            description: "Article object that needs to be updated in the list of articles"
+            required: true
+            schema:
+              $ref: "#/definitions/Article"
+        responses:
+          200:
+            description: "OK"
+          404:
+            description: "Could not update the entity: The specified entity does not exist!"
+      delete:
+        tags:
+          - "article"
+        summary: "Deletes a article by ID"
+        description: ""
+        operationId: "deleteArticle"
+        parameters:
+          - name: "articleID"
+            in: "path"
+            description: "Article ID to delete"
+            required: true
+            type: "integer"
+            format: "int64"
+        responses:
+          200:
+            description: "All corresponding entities were deleted."
+          400:
+            description: "Could not delete entities: Something went wrong!"
 definitions:
   Article:
     type: "object"

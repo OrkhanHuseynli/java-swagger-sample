@@ -1,8 +1,11 @@
+C:\Users\ramse\Documents\GitHub\java-swagger-sample\src\main\java\com\sample\core\repository\ArticleDomain.java
+C:\Users\ramse\Documents\GitHub\java-swagger-sample\src\main\java\com\sample\core\service\ArticleService.java
 C:\Users\ramse\Documents\GitHub\java-swagger-sample\src\main\java\com\sample\core\controller\reponses\AbstractResponse.java
 C:\Users\ramse\Documents\GitHub\java-swagger-sample\src\main\java\com\sample\core\controller\ArticleController.java
-C:\Users\ramse\Documents\GitHub\java-swagger-sample\target\generated-sources\src\gen\java\main\com\sample\core\api\ArticlesApi.java
 C:\Users\ramse\Documents\GitHub\java-swagger-sample\target\generated-sources\src\gen\java\main\com\sample\core\Article.java
 C:\Users\ramse\Documents\GitHub\java-swagger-sample\src\main\java\com\sample\core\controller\reponses\PostResponse.java
 C:\Users\ramse\Documents\GitHub\java-swagger-sample\target\generated-sources\src\gen\java\main\com\sample\core\GeneralResponse.java
 C:\Users\ramse\Documents\GitHub\java-swagger-sample\src\main\java\com\sample\core\ArticlesApp.java
+C:\Users\ramse\Documents\GitHub\java-swagger-sample\target\generated-sources\src\gen\java\main\com\sample\core\api\V1Api.java
+C:\Users\ramse\Documents\GitHub\java-swagger-sample\src\main\java\com\sample\core\repository\ArticleRepository.java
 C:\Users\ramse\Documents\GitHub\java-swagger-sample\target\generated-sources\src\gen\java\main\com\sample\core\ArticleEntity.java
