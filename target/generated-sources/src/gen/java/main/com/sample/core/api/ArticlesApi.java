@@ -7,6 +7,7 @@ package com.sample.core.api;
 
 import com.sample.core.Article;
 import com.sample.core.ArticleEntity;
+import com.sample.core.GeneralResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -108,14 +109,22 @@ public interface ArticlesApi {
     }
 
 
-    @ApiOperation(value = "Add a new article to the list of connections", nickname = "postArticle", notes = "", tags={ "article", })
+    @ApiOperation(value = "Add a new article to the list of connections", nickname = "postArticle", notes = "", response = GeneralResponse.class, tags={ "article", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "Created") })
+        @ApiResponse(code = 201, message = "Created", response = GeneralResponse.class) })
     @RequestMapping(value = "/articles",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    default ResponseEntity<Void> postArticle(@ApiParam(value = "Article object that needs to be added to the list of articles" ,required=true )  @Valid @RequestBody Article body) {
+    default ResponseEntity<GeneralResponse> postArticle(@ApiParam(value = "Article object that needs to be added to the list of articles" ,required=true )  @Valid @RequestBody Article body) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
+            if (getAcceptHeader().get().contains("application/json")) {
+                try {
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"message\" : \"message\"}", GeneralResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                } catch (IOException e) {
+                    log.error("Couldn't serialize response for content type application/json", e);
+                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            }
         } else {
             log.warn("ObjectMapper or HttpServletRequest not configured in default ArticlesApi interface so no example is generated");
         }

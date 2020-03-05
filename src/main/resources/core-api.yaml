@@ -4,7 +4,7 @@ info:
   version: "1.0.0"
   title: "ARTICLES REST API"
   contact:
-    email: "o.....@gmail.com"
+    email: ".....@gmail.com"
 tags:
 - name: "connections"
   description: "Access to database connections"
@@ -45,6 +45,8 @@ paths:
       responses:
         201:
           description: "Created"
+          schema:
+            $ref: "#/definitions/GeneralResponse"
 
   /articles/{articleID}:
     get:
@@ -131,3 +133,9 @@ definitions:
       category:
         $ref: "#/definitions/Article"
         description: "Article content"
+  GeneralResponse:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+        description: "response message"
