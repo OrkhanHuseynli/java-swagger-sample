@@ -1,0 +1,5 @@
+com\sample\core\controller\SampleController.class
+com\sample\core\SwaggerApp.class
+com\sample\core\ArticleEntity.class
+com\sample\core\api\ArticlesApi.class
+com\sample\core\Article.class
