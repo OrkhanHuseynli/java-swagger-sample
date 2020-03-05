@@ -1,6 +1,7 @@
 package com.sample.core.service;
 
 import com.sample.core.Article;
+import com.sample.core.ArticleEntity;
 import com.sample.core.GeneralResponse;
 import com.sample.core.repository.ArticleDomain;
 import com.sample.core.repository.ArticleRepository;
@@ -10,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -40,5 +43,18 @@ public class ArticleService {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(response);
     }
+
+
+    public ResponseEntity<Article> getArticle(Integer articleID) {
+        ArticleDomain domain = articleRepository.findById(articleID).get();
+            Article article = new Article();
+            article.setTitle(domain.getTitle());
+            article.setContent(domain.getContent());
+            return ResponseEntity.status(HttpStatus.OK)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(article);
+
+    }
+
 
 }

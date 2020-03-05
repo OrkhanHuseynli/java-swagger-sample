@@ -6,7 +6,6 @@
 package com.sample.core.api;
 
 import com.sample.core.Article;
-import com.sample.core.ArticleEntity;
 import com.sample.core.GeneralResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
@@ -86,17 +85,17 @@ public interface ArticlesApi {
     }
 
 
-    @ApiOperation(value = "Find connection by ID", nickname = "getArticle", notes = "Returns a single connection", response = ArticleEntity.class, tags={ "connection", })
+    @ApiOperation(value = "Find connection by ID", nickname = "getArticle", notes = "Returns a single connection", response = Article.class, tags={ "connection", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = ArticleEntity.class) })
+        @ApiResponse(code = 200, message = "OK", response = Article.class) })
     @RequestMapping(value = "/articles/{articleID}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<ArticleEntity> getArticle(@ApiParam(value = "ID of the article to return",required=true) @PathVariable("articleID") Long articleID) {
+    default ResponseEntity<Article> getArticle(@ApiParam(value = "ID of the article to return",required=true) @PathVariable("articleID") Integer articleID) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"id\" : 0,  \"category\" : {    \"title\" : \"title\",    \"content\" : \"content\"  }}", ArticleEntity.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"title\" : \"title\",  \"content\" : \"content\"}", Article.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

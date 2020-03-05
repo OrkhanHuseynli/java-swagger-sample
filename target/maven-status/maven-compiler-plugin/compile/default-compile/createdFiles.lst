@@ -1,8 +1,3 @@
 com\sample\core\ArticlesApp.class
-com\sample\core\ArticleEntity.class
-com\sample\core\GeneralResponse.class
 com\sample\core\controller\reponses\PostResponse.class
 com\sample\core\controller\reponses\AbstractResponse.class
-com\sample\core\api\ArticlesApi.class
-com\sample\core\Article.class
-com\sample\core\controller\ArticleController.class

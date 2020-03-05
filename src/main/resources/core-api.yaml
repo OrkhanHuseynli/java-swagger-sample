@@ -63,12 +63,11 @@ paths:
         description: "ID of the article to return"
         required: true
         type: "integer"
-        format: "int64"
       responses:
         200:
           description: "OK"
           schema:
-            $ref: "#/definitions/ArticleEntity"
+            $ref: "#/definitions/Article"
     put:
       tags:
       - "article"
