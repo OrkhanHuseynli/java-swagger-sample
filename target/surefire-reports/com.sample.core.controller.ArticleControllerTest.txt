@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.sample.core.controller.ArticleControllerTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.042 s - in com.sample.core.controller.ArticleControllerTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.694 s - in com.sample.core.controller.ArticleControllerTest
