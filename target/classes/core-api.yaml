@@ -27,6 +27,7 @@ paths:
               type: "array"
               items:
               $ref: "#/definitions/Article"
+  /articles:
       post:
         tags:
           - "article"

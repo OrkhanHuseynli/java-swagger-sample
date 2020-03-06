@@ -1,5 +1,6 @@
 package com.sample.core.controller;
 
+import com.sample.core.MockBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -21,10 +23,23 @@ public class ArticleControllerTest {
     @Autowired
     private MockMvc mvc;
 
+    @Test
+    public void getArticleWhichExistsTest() throws Exception {
+        this.mvc.perform(get("/articles/4")
+                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
+    }
 
     @Test
     public void getArticleWhichDoesntExistTest() throws Exception {
-        this.mvc.perform(get("/v1/articles/2")
+        this.mvc.perform(get("/articles/22")
+                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound()).andReturn();
+    }
+
+    @Test
+    public void getArticleWhichWasJustPosted() throws Exception {
+        this.mvc.perform(post("/articles").content(MockBuilder.getArticleAsJsonString())
+                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
+        this.mvc.perform(get("/articles/6")
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
     }
 }

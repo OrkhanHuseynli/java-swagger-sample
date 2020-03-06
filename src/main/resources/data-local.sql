@@ -1,0 +1,2 @@
+INSERT INTO article_domain(id, title, content) VALUES (4, 'New service', 'MIT introduces new services');
+INSERT INTO article_domain(id, title, content) VALUES (5, 'New service', 'MIT introduces new services');

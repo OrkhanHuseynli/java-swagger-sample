@@ -111,7 +111,7 @@ public interface ArticlesApi {
     @ApiOperation(value = "Add a new article to the list of connections", nickname = "postArticle", notes = "", response = GeneralResponse.class, tags={ "article", })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Created", response = GeneralResponse.class) })
-    @RequestMapping(value = "/articles/",
+    @RequestMapping(value = "/articles",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
     default ResponseEntity<GeneralResponse> postArticle(@ApiParam(value = "Article object that needs to be added to the list of articles" ,required=true )  @Valid @RequestBody Article body) {

@@ -46,14 +46,18 @@ public class ArticleService {
 
 
     public ResponseEntity<Article> getArticle(Integer articleID) {
-        ArticleDomain domain = articleRepository.findById(articleID).get();
+        Optional<ArticleDomain> optional = articleRepository.findById(articleID);
+        if (optional.isPresent()){
+            ArticleDomain domain = optional.get();
             Article article = new Article();
             article.setTitle(domain.getTitle());
             article.setContent(domain.getContent());
             return ResponseEntity.status(HttpStatus.OK)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(article);
+        }
 
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 
